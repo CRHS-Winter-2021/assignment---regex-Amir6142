@@ -1,6 +1,6 @@
 ### Assignment: Regex and Files
-##Name:
-##Date: 
+##Name: Amir
+##Date: Feb 22
 
 #don't forget to import regex
 
@@ -9,18 +9,21 @@
 #A# Change the regex from .* to what is required to capture an email address
 #B# Add a condition so that no blanks are printed.
 #C# Count the number of email addresses found and print a final output line.
+import re
 
 def reEmail(fname):
-  
+  count = 0
   fhand = open(fname,'r')
   for line in fhand:
-    extr = re.findall('.*',line)
+    extr = re.findall('\S+@\S+',line)
     if len(extr): 
+      count += 1
       print(extr)
+  print(count)
         
 
   print()
-    
+   
 
 '''### Task 1 Results for 
 >reEmail('rural-staff.txt')
@@ -37,7 +40,7 @@ There were 89 email addresses in rural-staff.txt
 def reAward(fname):
   fhand = open(fname, 'r')
   for line in fhand:
-    extr = re.findall('.*', line)
+    extr = re.findall('-.+', line)
     if len(extr):
       print(extr)
 
@@ -51,12 +54,16 @@ def reAward(fname):
 ##(/5) Task 3: CREATE code that will open a file and extract all the phone numbers 
 
 def rePhone(fname):
+  fhand = open(fname, 'r')
+  for line in fhand:
+    extr = re.findall('[0-9]{3,}-\S+', line)
+    if len(extr):
+      print(extr)
   #open file
   #loop through the file
   #extract the specific phone numbers regex
   #if the length of the extraction is not empty
   #print the phone number
-  pass
 
 '''### Task 3 results
 >rePhone('rural-staff.txt')
